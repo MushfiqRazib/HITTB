@@ -1,0 +1,35 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 10.00
+# Visual Studio 2008
+Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "Web_PropertyEditor", ".", "{433378F1-A4C1-4B10-9EA6-5D861A05897D}"
+	ProjectSection(WebsiteProperties) = preProject
+		TargetFramework = "3.5"
+		Debug.AspNetCompiler.VirtualPath = "/PropertyEditor"
+		Debug.AspNetCompiler.PhysicalPath = "..\Web_PropertyEditor\"
+		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\PropertyEditor\"
+		Debug.AspNetCompiler.Updateable = "true"
+		Debug.AspNetCompiler.ForceOverwrite = "true"
+		Debug.AspNetCompiler.FixedNames = "false"
+		Debug.AspNetCompiler.Debug = "True"
+		Release.AspNetCompiler.VirtualPath = "/PropertyEditor"
+		Release.AspNetCompiler.PhysicalPath = "..\Web_PropertyEditor\"
+		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\PropertyEditor\"
+		Release.AspNetCompiler.Updateable = "true"
+		Release.AspNetCompiler.ForceOverwrite = "true"
+		Release.AspNetCompiler.FixedNames = "false"
+		Release.AspNetCompiler.Debug = "False"
+		VWDPort = "8799"
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|.NET = Debug|.NET
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{433378F1-A4C1-4B10-9EA6-5D861A05897D}.Debug|.NET.ActiveCfg = Debug|.NET
+		{433378F1-A4C1-4B10-9EA6-5D861A05897D}.Debug|.NET.Build.0 = Debug|.NET
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

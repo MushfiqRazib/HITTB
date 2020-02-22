@@ -1,0 +1,11 @@
+﻿[HITDB]
+admin,xnbgrw,ADMIN,123
+guest,xnbgrw,VIEW,456
+
+[EDMHEY]
+cni,123,heyviewer,456
+epo,234,heyadmin,567
+
+[XD01]
+cni,pwd,heyviewer,pwd
+epo,pwd,heyadmin,pwd

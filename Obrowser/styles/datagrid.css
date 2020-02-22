@@ -1,0 +1,182 @@
+/*** Datagrid layout ***/
+IMG.Legenda
+{
+  border: 1px solid #000000;
+  height: 13px;
+  width : 13px
+}
+
+IMG.Clickable
+{
+	cursor: pointer;
+}
+
+DIV.Datagrid
+{
+  background-color: #E6E6E6;
+  border          : 0px none #000000;
+  color           : #000000;
+  height          : 100%;
+  margin          : 0px;
+  overflow        : auto;
+  padding         : 0px;
+  width           : 100%;
+  z-index         : 20;
+  border          : 1px; 
+  border-style    : solid;
+  border-color    : rgb(35,98,118);
+}
+
+TABLE.Datagrid
+{
+  background-color:  #E6E6E6;
+  border-collapse : separate;
+  color           : #000000;
+  width           : 100%;  
+}
+
+
+TABLE.Datagrid THEAD TH, TH.Scroll,ScrollGridSpecific,ScrollGridGeneral
+{
+  background-color: #C0C0C0;
+  color           : #000000;
+  border-right    : 1px solid #E6E6E6;
+  cursor          : pointer;
+  font-weight     : bold;
+  padding         : 0px 5px;
+  z-index         : 20;  
+}
+
+THEAD
+{
+	color: #FFFFFF;	
+}
+
+TH.Scroll
+{
+  position: relative;
+  top     : expression(document.getElementById("Container_PGrid").scrollTop)
+}
+
+TH.ScrollGridSpecific
+{
+  position     : relative;  
+  top          : expression(document.getElementById("GridSpecific").scrollTop)
+}
+
+TH.ScrollGridGeneral
+{
+  position: relative;
+  top     : expression(document.getElementById("GridGeneral").scrollTop)
+}
+
+TD.TDLeft, TD.TDCenter, TD.TDRight
+{
+  border-bottom: #C1CDD8 1px solid;
+  cursor       : default;
+  font-size    : 13px;
+  padding      : 3px 5px;
+  text-align   : left
+}
+
+TD.TDCenter
+{
+  text-align: center
+}
+
+TD.TDRight
+{
+  text-align: right
+}
+
+.LegendStyle
+{    
+    color:        rgb(35,98,118);
+    font-weight:  bold; 
+	font-size:    13px;     
+}
+
+.BodyStyle
+{
+	background-color: #E6E6E6;
+	font-weight     : bold;
+	font-family     : Arial;
+}
+.FontProperty
+{
+	font       : normal 14px Arial;
+}
+
+.ArtikelStyle
+{
+	width      : 100%;
+	color      : Black;
+	font-size  : small;
+	text-align : left;
+	font-weight: bold;
+}
+
+BUTTON, .Button , gridButton
+{
+    background-color  : #E6E6E6;
+	font              : normal 14px Arial;
+	height            : 22px;
+	cursor            : pointer;			
+	font-weight       : bold;	
+} 
+
+.gridButton
+{
+	background-color  : #E6E6E6;	
+	border-color      : White;
+	font-weight       : normal;	
+}
+
+/*** File browsing styles ***/
+DIV.FileBrowse
+{
+  border      : 0px none #000000;
+  position    : absolute;
+  text-align  : right;
+  width       : 205px;
+  z-index     : 1
+}
+
+INPUT.FileBrowse
+{
+  filter : alpha(opacity: 0);
+  height : 21px;
+  opacity: 0;
+  width  : 205px
+}
+
+INPUT.FileButton
+{
+  background-color: #E6E6E6;
+  color           : #000000;
+  border-width    : 1px;
+  height          : 21px;
+  margin          : 0px;
+  font            : normal 12px Arial;
+  font-weight     : bold;	
+  padding         : 0px;
+  position        : relative;
+  width           : 63px;
+  z-index         : 0
+}
+
+INPUT.FileDisplay
+{
+  font    : normal 12px Arial;
+  height  : 21px;
+  position: relative;
+  width   : 267px;
+  z-index : 2
+}
+
+IMG.Link
+{
+  border: 1px none #FFFFFF;
+  cursor: pointer
+}
+

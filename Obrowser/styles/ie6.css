@@ -1,0 +1,12 @@
+﻿html,body
+{
+	height:100%;
+	overflow:hidden;
+}
+
+#header-wrap, #footer-wrap {
+	position: absolute;
+}
+#footer-wrap {
+	bottom: -1px;
+}

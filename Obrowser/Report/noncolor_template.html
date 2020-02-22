@@ -1,0 +1,205 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+    <title>PDF Rapport Opties</title>
+    <meta http-equiv="content-type" content="text/html; charset=iso-8859-1">
+    <style>
+        body
+        {
+            background-color: #eeffdd;
+        }
+        BUTTON, .Button
+        {
+            background-color: #CBCBDB;
+            font: normal 12px Arial;
+            height: 23px;
+            cursor: pointer;
+            width: 80px;
+        }
+        BUTTON.edit
+        {
+            background-color: #005C8E;
+            margin: 0px 0px 0px 0px;
+            padding: 0px 0px 0px 0px;
+            border-width: 1px;
+            color: #FFFFCC;
+            font-weight: bold;
+            font-family: Arial, Verdana, Sans-Serif;
+        }
+    </style>
+
+    <script type="text/javascript" src="../../../script/common.js"></script>
+
+    <script type="text/javascript" src="../../../script/controls.js"></script>
+
+    <script type="text/javascript" src="../../../script/sarissa.js"></script>
+
+    <script src="../../Scripts/pdfreportcommon.js" type="text/javascript"></script>
+
+    <script type="text/javascript">
+  
+  function generatepdf()
+  {
+	var username, curdate, titel, showfilter, paperformat, papersize, table, fields, whereclause, groupby, orderby, report,reportID,connstring;
+	
+	if(document.reportoptions.username.checked)
+		username=document.reportoptions.username.value;
+	else
+		username="null";
+	
+	if(document.reportoptions.curdate.checked)
+		curdate="true";
+	else
+		curdate="null";
+	
+	if(document.reportoptions.titel.checked)
+		titel= GetQueryStringValue("reportName");
+	else
+		titel="";
+	
+	if(document.reportoptions.showfilter.checked)
+		showfilter=document.reportoptions.showfilter.value;
+	else
+		showfilter="null";
+	
+	for (i=0;document.reportoptions.paperformat.length-1; i++)
+	{
+		if (document.reportoptions.paperformat[i].checked)
+		{
+			paperformat=document.reportoptions.paperformat[i].value;
+			break;
+		}
+	}
+	for (i=0;document.reportoptions.papersize.length-1; i++)
+	{
+		if (document.reportoptions.papersize[i].checked)
+		{
+			papersize=document.reportoptions.papersize[i].value;
+			break;
+		}
+	}
+	
+    //***Process connection string
+	//connstring = getConnectionString(connstring);
+	//***end
+    //var securityKey = window.opener.SECURITY_KEY;
+	var uri = "PdfReport.aspx"+window.location.search;
+	var parameter = "&username="+username+"&titel="+titel+"&reportid="+reportID+"&showfilter="+showfilter+"&curdate="+curdate+"&paperformat="+paperformat+"&papersize="+papersize+"&reporttype=Regular";//&table="+table+"&fields="+fields+"&whereclause="+whereclause+"&groupby="+groupby+"&orderby="+orderby+"&securityKey="+securityKey;
+	parameter = escape(parameter);
+	
+	var wndName = "PDFReport";
+	var features = "toolbar=no,directories=no,status=no,scrollbars=yes,menubar=no,location=no,resizable=yes,width="+(parseInt(screen.width)-200)+",height="+(parseInt(screen.height)-200);
+
+	var wnd = window.open(uri+parameter, wndName, features);
+	wnd.moveTo(0,0);
+	//*** Check for popup blocker!
+  	if(!wnd)
+  	{
+  		alert("Please disable your popup blocker!");
+  	}
+  	else
+  	{
+  		//*** Set focus to dialog.
+  		wnd.focus();
+  	}
+	
+	//***Close the report options dialog box
+	this.close();
+  }
+  
+  
+  function GetQueryStringValue(key) 
+  {
+    var hu = unescape(window.location.search.substring(1));
+    var gy = hu.split("&");
+    for (i=0;i<gy.length;i++) 
+    {
+	  var ft = gy[i].split("=");
+	  if (ft[0] == key) 
+	  {
+		return ft[1];
+	  }
+    }
+  }
+    </script>
+
+</head>
+<body>
+    <fieldset style="margin: 6px 6px">
+        <legend>PDF Report Options</legend>
+        <table width="90%" align="center" cellspacing="4" style="margin: 8px 0px">
+            <form width="90%" name="reportoptions">
+            <tr>
+                <td nowrap>
+                    Toevoegen :
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="checkbox" name="username" value="username" checked>Gebruikersnaam
+                </td>
+                <td>
+                    <input type="checkbox" name="curdate" value="curdate" checked>Datum
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="checkbox" name="titel" value="titel" checked>Titel (OB rapportnaam)
+                </td>
+                <td>
+                    <input type="checkbox" name="showfilter" value="showfilter" checked>Toon filter
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    ___________________________________________________________________
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                </td>
+            </tr>
+            <tr>
+                <td nowrap>
+                    Formaat :
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="radio" name="paperformat" value="portrait" checked>Portret
+                </td>
+                <td>
+                    <input type="radio" name="paperformat" value="landscape">Landschap
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="radio" name="papersize" value="a4" checked>A4
+                </td>
+                <td>
+                    <input type="radio" name="papersize" value="a3">A3
+                </td>
+            </tr>
+            </form>
+        </table>
+    </fieldset>
+    <table width="99%">
+        <tr>
+            <td align="right" style="padding-top: 6px">
+                <button style="width: 100px; height: 22px;" class="edit" onclick="generatepdf()">
+                    Genereer PDF</button>&nbsp;&nbsp;
+                <button style="width: 100px; height: 22px;" class="edit" onclick="window.close()">
+                    Annuleren</button>
+            </td>
+        </tr>
+    </table>
+</body>
+</html>

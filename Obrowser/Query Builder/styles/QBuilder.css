@@ -1,0 +1,65 @@
+﻿html, body
+{
+	margin: 0;
+	padding: 0;
+	overflow: hidden;
+}
+body
+{
+	margin: 0;
+	padding: 0;
+	background-color: #eeffdd;
+}
+
+.Obuilder
+{
+	background-color: #eeffdd;
+	height: 100%;
+	width: 100%;
+	overflow: auto;
+	padding-top: 5px;
+}
+SELECT.Combobox
+{
+	clip: rect(1px, 159px, 20px, 143px);
+	position: absolute;
+	height: 20px;
+	width: 160px;
+	z-indez: 1;
+}
+INPUT.Combobox
+{
+	font: normal 12px Arial;
+	height: 20px;
+	position: absolute;
+	width: 160px;
+	z-indez: 1000;
+}
+BUTTON.edit
+{
+	background-color: #005C8E;
+	margin: 0px 0px 0px 0px;
+	padding: 0px 0px 0px 0px;
+	border-width: 1px;
+	color: #FFFFCC;
+	font-weight: bold;
+	font-family: Arial, Verdana, Sans-Serif;
+}
+
+TD.clause
+{
+	padding-left: 0px;
+	padding-top: 0px;
+	padding-right: 5px;
+	padding-bottom: 5px;
+	vertical-align: bottom;
+}
+
+TD.clause_input
+{
+	padding-left: 0px;
+	padding-top: 0px;
+	padding-right: 5px;
+	padding-bottom: 4px;
+	vertical-align: bottom;
+}

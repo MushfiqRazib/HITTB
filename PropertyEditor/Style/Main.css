@@ -1,0 +1,160 @@
+﻿div.content
+{
+	background-color: #EEF3FB;
+	border-color: #E0DFE3;
+	border-width: 1px;
+	border-style: solid;
+	vertical-align: top;
+	float: left;
+	padding-left: 10px; 
+	padding-top: 5px; 
+	width: 1066px; 
+	height: 597px;
+}
+
+div.menu
+{
+	vertical-align: top;
+	text-align: left;
+	float: left;
+	width: 125px; 
+	height: 597px;
+}
+
+div.placeholder
+{
+	z-index: 101; 
+	left: 20px; 
+	width: 1220px; 
+	position: absolute; 
+	top: 125px; 
+	height: 597px
+}
+
+
+div.euroAlign
+{
+	align:left;
+	float:left;
+}
+div.valueAlign
+{
+	align:right;
+	float:right;	
+}
+
+.modalBackground 
+{
+	background-color:Gray;
+	filter:alpha(opacity=70);
+	opacity:0.7;
+}
+
+.modalPopup 
+{
+	background-color:#ffffdd;
+	border-width:1px;
+	border-style:solid;
+	border-color:#333399;
+	padding:0px;
+	width:550px;
+	
+}
+
+.modalPopupTitle
+{
+	width: 100%; 
+	height: 25px; 
+	background-color: #333399; 
+	text-align: center;
+	font-size: 15px; 
+	color: #ffffff; 
+	font-family: Tahoma;	
+}
+
+a.menuoptions:hover 
+{	
+	text-decoration: underline;
+	background-color: #DDE2EA;
+}
+
+a.menuoptions
+{
+	line-height: 1.5;
+	text-decoration: none;
+}
+
+.menublock
+{
+	font-size: 12px;
+	padding: 2px 5px 3px 5px;
+	display: block;
+}
+
+.filterbox
+{
+	width: 105px; 
+	height: auto; 
+	padding:5px; 
+}
+
+.pageView
+{
+    border: 1px solid #E0DFE3;
+    margin-top: -4px;
+}
+
+.radCmbHeaderCol
+{
+	float:left; 
+	height: 20px; 
+	font-size: small; 
+	font-family: Tahoma,Verdana,Arial;
+	background-color: #DDE2EA;
+	color: #BF0028;
+	margin: 0px;
+	padding-left: 5px;
+}
+
+.radCmbItemCol
+{
+	float:left; 
+	line-height: 14px; 
+	font-size: small; 
+	font-family: Tahoma,Verdana,Arial;
+	margin: 0px;
+}
+
+.Spaced
+{
+	letter-spacing: 8px;
+}
+
+div#dvPopupArt
+{
+	top: 35px;
+	left: 745px;
+	display: block;
+	opacity: 0.7; 
+	filter: 'alpha(opacity=70)';
+	width:200px;
+	height:200px;
+}
+
+.legend
+{
+	font-size: small; 
+	font-family: Tahoma,Verdana,Arial;
+	color: #003399;
+	}
+	
+.fieldset
+{
+	    padding: 15px; 
+	    width:90%;
+}
+
+#caldate_popupDiv
+{
+	z-index:1000;
+}

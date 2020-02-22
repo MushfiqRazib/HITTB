@@ -1,0 +1,64 @@
+Sub SaveToArchive()
+'
+
+ Dim oProp As Object
+    Dim Author As String
+    Dim Title As String
+    Dim Subject As String
+    Dim propertyInfo As String
+    Dim filePath As String
+    Dim objWord As Object
+   
+    
+    On Error Resume Next
+     
+    
+    'If objWord Is Nothing Then
+     '   Set objWord = CreateObject("Word.Application")
+    'Else
+     '   Set objWord = GetObject(, "Word.Application")
+    'End If
+    
+    For Each oProp In ActiveDocument.BuiltInDocumentProperties
+       
+        Select Case oProp.Name
+            Case "Author"
+                Author = "Author:" & oProp.Value
+            Case "Title"
+                Title = "Title:" & oProp.Value
+            Case "Subject"
+                Subject = "Subject:" & oProp.Value
+        End Select
+        
+    Next
+    
+    propertyInfo = Author & "@@" & Title
+    propertyInfo = Replace(propertyInfo, " ", "$")
+    
+    Dim tempFile As String
+    Dim tPath As String
+    
+    tPath = ActiveDocument.FullName
+    tPath = Replace(tPath, " ", "$")
+    
+    tempFile = ActiveDocument.FullName
+    
+    'MsgBox tempFile & tPath
+    
+     If UBound(Split(tempFile, "-")) > 0 Then
+         tempFile = Split(tempFile, "-")(0) & ".doc"
+     ElseIf UBound(Split(tempFile, "[")) > 0 Then
+          tempFile = Split(tempFile, "[")(0) & ".doc"
+     End If
+    
+    tempFile = Replace(tempFile, ".doc", "1.doc")
+    
+    ActiveDocument.SaveAs (tempFile)
+    tempFile = Replace(tempFile, " ", "$")
+    
+    
+    Shell ("E:\projecten\OfficeAutomationTool\bin\Debug\ChangeDocProperty.exe " & tPath & " " & tempFile & " " & propertyInfo)
+
+    
+
+End Sub

@@ -1,0 +1,638 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="ValidateUserAndGetSecurityId">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="userId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="roleName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="rolePass" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="print_server_location" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="kit_server_url" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="docSharePath" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ValidateUserAndGetSecurityIdResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ValidateUserAndGetSecurityIdResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAuthenticationValues">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="securityKey" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAuthenticationValuesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetAuthenticationValuesResult" type="tns:ArrayOfString" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfString">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="string" nillable="true" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="UpdateLastAccessTime">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="securityKey" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateLastAccessTimeResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="UpdateLastAccessTimeResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetReportCodes">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetReportCodesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetReportCodesResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SaveDocument">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="fileChunk" type="s:base64Binary" />
+            <s:element minOccurs="1" maxOccurs="1" name="chunkNo" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="isNewFile" type="s:boolean" />
+            <s:element minOccurs="0" maxOccurs="1" name="relfileName" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SaveDocumentResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SaveDocumentResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetFullXML">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="filePath" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetFullXMLResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetFullXMLResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetRelativePath">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="reportName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="fileName" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetRelativePathResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetRelativePathResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="FetchFileChunk">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="filePath" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="findLatest" type="s:boolean" />
+            <s:element minOccurs="1" maxOccurs="1" name="lastModifiedDTime" nillable="true" type="s:dateTime" />
+            <s:element minOccurs="0" maxOccurs="1" name="locationCode" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="counter" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="FetchFileChunkResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="FetchFileChunkResult" type="s:base64Binary" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetFileProperties">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="relativeFilePath" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetFilePropertiesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetFilePropertiesResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateFileInfo">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="information" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="viewName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="relfilename" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateFileInfoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UpdateFileInfoResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SaveFileInfo">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="information" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="viewName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="reference" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SaveFileInfoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SaveFileInfoResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetInfoForThisFile">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="viewName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="fileName" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetInfoForThisFileResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetInfoForThisFileResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteFileInfo">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="viewName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="relfilename" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteFileInfoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DeleteFileInfoResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteFile">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="relfilename" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteFileResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DeleteFileResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="ValidateUserAndGetSecurityIdSoapIn">
+    <wsdl:part name="parameters" element="tns:ValidateUserAndGetSecurityId" />
+  </wsdl:message>
+  <wsdl:message name="ValidateUserAndGetSecurityIdSoapOut">
+    <wsdl:part name="parameters" element="tns:ValidateUserAndGetSecurityIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetAuthenticationValuesSoapIn">
+    <wsdl:part name="parameters" element="tns:GetAuthenticationValues" />
+  </wsdl:message>
+  <wsdl:message name="GetAuthenticationValuesSoapOut">
+    <wsdl:part name="parameters" element="tns:GetAuthenticationValuesResponse" />
+  </wsdl:message>
+  <wsdl:message name="UpdateLastAccessTimeSoapIn">
+    <wsdl:part name="parameters" element="tns:UpdateLastAccessTime" />
+  </wsdl:message>
+  <wsdl:message name="UpdateLastAccessTimeSoapOut">
+    <wsdl:part name="parameters" element="tns:UpdateLastAccessTimeResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetReportCodesSoapIn">
+    <wsdl:part name="parameters" element="tns:GetReportCodes" />
+  </wsdl:message>
+  <wsdl:message name="GetReportCodesSoapOut">
+    <wsdl:part name="parameters" element="tns:GetReportCodesResponse" />
+  </wsdl:message>
+  <wsdl:message name="SaveDocumentSoapIn">
+    <wsdl:part name="parameters" element="tns:SaveDocument" />
+  </wsdl:message>
+  <wsdl:message name="SaveDocumentSoapOut">
+    <wsdl:part name="parameters" element="tns:SaveDocumentResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetFullXMLSoapIn">
+    <wsdl:part name="parameters" element="tns:GetFullXML" />
+  </wsdl:message>
+  <wsdl:message name="GetFullXMLSoapOut">
+    <wsdl:part name="parameters" element="tns:GetFullXMLResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetRelativePathSoapIn">
+    <wsdl:part name="parameters" element="tns:GetRelativePath" />
+  </wsdl:message>
+  <wsdl:message name="GetRelativePathSoapOut">
+    <wsdl:part name="parameters" element="tns:GetRelativePathResponse" />
+  </wsdl:message>
+  <wsdl:message name="FetchFileChunkSoapIn">
+    <wsdl:part name="parameters" element="tns:FetchFileChunk" />
+  </wsdl:message>
+  <wsdl:message name="FetchFileChunkSoapOut">
+    <wsdl:part name="parameters" element="tns:FetchFileChunkResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetFilePropertiesSoapIn">
+    <wsdl:part name="parameters" element="tns:GetFileProperties" />
+  </wsdl:message>
+  <wsdl:message name="GetFilePropertiesSoapOut">
+    <wsdl:part name="parameters" element="tns:GetFilePropertiesResponse" />
+  </wsdl:message>
+  <wsdl:message name="UpdateFileInfoSoapIn">
+    <wsdl:part name="parameters" element="tns:UpdateFileInfo" />
+  </wsdl:message>
+  <wsdl:message name="UpdateFileInfoSoapOut">
+    <wsdl:part name="parameters" element="tns:UpdateFileInfoResponse" />
+  </wsdl:message>
+  <wsdl:message name="SaveFileInfoSoapIn">
+    <wsdl:part name="parameters" element="tns:SaveFileInfo" />
+  </wsdl:message>
+  <wsdl:message name="SaveFileInfoSoapOut">
+    <wsdl:part name="parameters" element="tns:SaveFileInfoResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetInfoForThisFileSoapIn">
+    <wsdl:part name="parameters" element="tns:GetInfoForThisFile" />
+  </wsdl:message>
+  <wsdl:message name="GetInfoForThisFileSoapOut">
+    <wsdl:part name="parameters" element="tns:GetInfoForThisFileResponse" />
+  </wsdl:message>
+  <wsdl:message name="DeleteFileInfoSoapIn">
+    <wsdl:part name="parameters" element="tns:DeleteFileInfo" />
+  </wsdl:message>
+  <wsdl:message name="DeleteFileInfoSoapOut">
+    <wsdl:part name="parameters" element="tns:DeleteFileInfoResponse" />
+  </wsdl:message>
+  <wsdl:message name="DeleteFileSoapIn">
+    <wsdl:part name="parameters" element="tns:DeleteFile" />
+  </wsdl:message>
+  <wsdl:message name="DeleteFileSoapOut">
+    <wsdl:part name="parameters" element="tns:DeleteFileResponse" />
+  </wsdl:message>
+  <wsdl:portType name="AppServicesForKitSoap">
+    <wsdl:operation name="ValidateUserAndGetSecurityId">
+      <wsdl:input message="tns:ValidateUserAndGetSecurityIdSoapIn" />
+      <wsdl:output message="tns:ValidateUserAndGetSecurityIdSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAuthenticationValues">
+      <wsdl:input message="tns:GetAuthenticationValuesSoapIn" />
+      <wsdl:output message="tns:GetAuthenticationValuesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateLastAccessTime">
+      <wsdl:input message="tns:UpdateLastAccessTimeSoapIn" />
+      <wsdl:output message="tns:UpdateLastAccessTimeSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetReportCodes">
+      <wsdl:input message="tns:GetReportCodesSoapIn" />
+      <wsdl:output message="tns:GetReportCodesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SaveDocument">
+      <wsdl:input message="tns:SaveDocumentSoapIn" />
+      <wsdl:output message="tns:SaveDocumentSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetFullXML">
+      <wsdl:input message="tns:GetFullXMLSoapIn" />
+      <wsdl:output message="tns:GetFullXMLSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetRelativePath">
+      <wsdl:input message="tns:GetRelativePathSoapIn" />
+      <wsdl:output message="tns:GetRelativePathSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="FetchFileChunk">
+      <wsdl:input message="tns:FetchFileChunkSoapIn" />
+      <wsdl:output message="tns:FetchFileChunkSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetFileProperties">
+      <wsdl:input message="tns:GetFilePropertiesSoapIn" />
+      <wsdl:output message="tns:GetFilePropertiesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateFileInfo">
+      <wsdl:input message="tns:UpdateFileInfoSoapIn" />
+      <wsdl:output message="tns:UpdateFileInfoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SaveFileInfo">
+      <wsdl:input message="tns:SaveFileInfoSoapIn" />
+      <wsdl:output message="tns:SaveFileInfoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetInfoForThisFile">
+      <wsdl:input message="tns:GetInfoForThisFileSoapIn" />
+      <wsdl:output message="tns:GetInfoForThisFileSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteFileInfo">
+      <wsdl:input message="tns:DeleteFileInfoSoapIn" />
+      <wsdl:output message="tns:DeleteFileInfoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteFile">
+      <wsdl:input message="tns:DeleteFileSoapIn" />
+      <wsdl:output message="tns:DeleteFileSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="AppServicesForKitSoap" type="tns:AppServicesForKitSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="ValidateUserAndGetSecurityId">
+      <soap:operation soapAction="http://tempuri.org/ValidateUserAndGetSecurityId" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAuthenticationValues">
+      <soap:operation soapAction="http://tempuri.org/GetAuthenticationValues" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateLastAccessTime">
+      <soap:operation soapAction="http://tempuri.org/UpdateLastAccessTime" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetReportCodes">
+      <soap:operation soapAction="http://tempuri.org/GetReportCodes" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SaveDocument">
+      <soap:operation soapAction="http://tempuri.org/SaveDocument" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetFullXML">
+      <soap:operation soapAction="http://tempuri.org/GetFullXML" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetRelativePath">
+      <soap:operation soapAction="http://tempuri.org/GetRelativePath" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FetchFileChunk">
+      <soap:operation soapAction="http://tempuri.org/FetchFileChunk" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetFileProperties">
+      <soap:operation soapAction="http://tempuri.org/GetFileProperties" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateFileInfo">
+      <soap:operation soapAction="http://tempuri.org/UpdateFileInfo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SaveFileInfo">
+      <soap:operation soapAction="http://tempuri.org/SaveFileInfo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetInfoForThisFile">
+      <soap:operation soapAction="http://tempuri.org/GetInfoForThisFile" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteFileInfo">
+      <soap:operation soapAction="http://tempuri.org/DeleteFileInfo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteFile">
+      <soap:operation soapAction="http://tempuri.org/DeleteFile" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="AppServicesForKitSoap12" type="tns:AppServicesForKitSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="ValidateUserAndGetSecurityId">
+      <soap12:operation soapAction="http://tempuri.org/ValidateUserAndGetSecurityId" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAuthenticationValues">
+      <soap12:operation soapAction="http://tempuri.org/GetAuthenticationValues" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateLastAccessTime">
+      <soap12:operation soapAction="http://tempuri.org/UpdateLastAccessTime" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetReportCodes">
+      <soap12:operation soapAction="http://tempuri.org/GetReportCodes" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SaveDocument">
+      <soap12:operation soapAction="http://tempuri.org/SaveDocument" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetFullXML">
+      <soap12:operation soapAction="http://tempuri.org/GetFullXML" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetRelativePath">
+      <soap12:operation soapAction="http://tempuri.org/GetRelativePath" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FetchFileChunk">
+      <soap12:operation soapAction="http://tempuri.org/FetchFileChunk" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetFileProperties">
+      <soap12:operation soapAction="http://tempuri.org/GetFileProperties" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateFileInfo">
+      <soap12:operation soapAction="http://tempuri.org/UpdateFileInfo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SaveFileInfo">
+      <soap12:operation soapAction="http://tempuri.org/SaveFileInfo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetInfoForThisFile">
+      <soap12:operation soapAction="http://tempuri.org/GetInfoForThisFile" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteFileInfo">
+      <soap12:operation soapAction="http://tempuri.org/DeleteFileInfo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteFile">
+      <soap12:operation soapAction="http://tempuri.org/DeleteFile" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="AppServicesForKit">
+    <wsdl:port name="AppServicesForKitSoap" binding="tns:AppServicesForKitSoap">
+      <soap:address location="http://localhost/obrowser/AppServicesForKit.asmx" />
+    </wsdl:port>
+    <wsdl:port name="AppServicesForKitSoap12" binding="tns:AppServicesForKitSoap12">
+      <soap12:address location="http://localhost/obrowser/AppServicesForKit.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

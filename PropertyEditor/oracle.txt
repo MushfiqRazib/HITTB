@@ -1,0 +1,49 @@
+CREATE TABLE metadata
+(
+  id number NOT NULL,
+  fieldname varchar2(30) NOT NULL,
+  fieldtype varchar2(30),
+  caption varchar2(30),
+  mandatory varchar2(10) NOT NULL,
+  "Default" varchar2(100),
+  lovc varchar2(200),
+  lovp varchar2(200),
+  lovcp varchar2(200),
+  "minvalue" varchar2(30),
+  "maxvalue" varchar2(30),
+  decimals varchar2(10),
+  strlen int,
+  displen int,
+  allowedit char(1) NOT NULL,
+  allowerror char(1) NOT NULL,
+  tip varchar2(50),
+  PRIMARY KEY (id)
+)
+
+
+CREATE TABLE params
+(
+  "name" varchar2(30),
+  roll varchar2(10),
+  "date" varchar2(10),
+  transport varchar2(10),
+  mandatory varchar2(10),
+  country varchar2(10),
+  balance varchar2(10),
+  city varchar2(10)
+)
+
+
+
+insert into metadata( id, fieldname,fieldtype,caption,  mandatory,  "Default",  lovc,  lovp,  lovcp,  "minvalue",  "maxvalue",  decimals,  strlen,  displen,  allowedit,  allowerror,  tip)
+values(4,'NAME','STR','Naam','Yes','a','','','','','','',10,100,'t','f','tip here');
+
+insert into metadata( id, fieldname,fieldtype,caption,  mandatory,  "Default",  lovc,  lovp,  lovcp,  "minvalue",  "maxvalue",  decimals,  strlen,  displen,  allowedit,  allowerror,  tip)
+values(5,'ROLL','FLOAT','Roll','Yes','1','','','','','','',10,100,'t','t','this is tip');
+
+
+Data Source=(DESCRIPTION=(ADDRESS_LIST=(ADDRESS=(PROTOCOL=TCP)(HOST=MyHost)(PORT=MyPort)))(CONNECT_DATA=(SERVER=DEDICATED)(SERVICE_NAME=MyOracleSID)));User Id=myUsername;Password=myPassword;
+
+Data Source=(DESCRIPTION=(ADDRESS_LIST=(ADDRESS=(PROTOCOL=TCP)(HOST=192.168.1.160)(PORT=1521)))(CONNECT_DATA=(SERVER=DEDICATED)(SERVICE_NAME=AASWORK)));User Id=HITPROJ;Password=HITPRO;
+
+Source=(DESCRIPTION=(ADDRESS_LIST=(ADDRESS=(PROTOCOL=TCP)(HOST=Appserver)(PORT=1521)))(CONNECT_DATA=(SERVER=DEDICATED)(SERVICE_NAME=AASWORK))); User Id=ugo_viewer;Password=ugo_viewer;"
